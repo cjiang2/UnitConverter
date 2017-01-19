@@ -29,7 +29,7 @@ namespace Converter
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
         }
 
-        private void HamburgerListView_ItemClick(object sender, ItemClickEventArgs e)
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;   // Hamburger Menu
         }

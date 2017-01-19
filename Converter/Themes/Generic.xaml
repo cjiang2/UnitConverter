@@ -108,13 +108,13 @@
                                 <SolidColorBrush x:Name="Brush" Color="{Binding Path=Background}" />
                             </Rectangle.Fill>
                         </Rectangle>
-                        <FontIcon Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="6,8,8,8"
+                        <FontIcon Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,8,8,8"
                                   FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="{TemplateBinding Tag}" FontSize="15">
                             <FontIcon.Foreground>
                                 <SolidColorBrush x:Name="Brush2" Color="{ThemeResource SystemBaseHighColor}" />
                             </FontIcon.Foreground>
                         </FontIcon>
-                        <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="4,6,8,8"
+                        <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="2,6,8,8"
                                    Text="{TemplateBinding Content}"  FontSize="15">
                              <TextBlock.Foreground>
                                 <SolidColorBrush x:Name="Brush3" Color="{ThemeResource SystemBaseHighColor}" />
