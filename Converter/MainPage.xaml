@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <SplitView x:Name="MainSplitView" DisplayMode="CompactOverlay" IsPaneOpen="False" Height="Auto"
+        <SplitView x:Name="MainSplitView" DisplayMode="CompactInline" IsPaneOpen="False" Height="Auto"
                CompactPaneLength="48" OpenPaneLength="200">
             <SplitView.Pane>
                 <RelativePanel Margin="0,48,0,0">
