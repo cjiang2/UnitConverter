@@ -65,6 +65,10 @@
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="Brush" Storyboard.TargetProperty="Color" 
                                                         From="{Binding Path=Background}" To="{ThemeResource SystemAccentColor}" Duration="0:0:0" FillBehavior="HoldEnd" />
+                                        <ColorAnimation Storyboard.TargetName="Brush2" Storyboard.TargetProperty="Color" 
+                                                        From="{ThemeResource SystemBaseHighColor}" To="{ThemeResource SystemAccentColor}" Duration="0:0:0" FillBehavior="HoldEnd" />
+                                        <ColorAnimation Storyboard.TargetName="Brush3" Storyboard.TargetProperty="Color" 
+                                                        From="{ThemeResource SystemBaseHighColor}" To="{ThemeResource SystemAccentColor}" Duration="0:0:0" FillBehavior="HoldEnd" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Unchecked" />
@@ -105,9 +109,16 @@
                             </Rectangle.Fill>
                         </Rectangle>
                         <FontIcon Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,8,8,8"
-                                  FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="{TemplateBinding Tag}" FontSize="15"/>
+                                  FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="{TemplateBinding Tag}" FontSize="15">
+                            <FontIcon.Foreground>
+                                <SolidColorBrush x:Name="Brush2" Color="{ThemeResource SystemBaseHighColor}" />
+                            </FontIcon.Foreground>
+                        </FontIcon>
                         <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="4,8,8,8"
                                    Text="{TemplateBinding Content}"  FontSize="15">
+                             <TextBlock.Foreground>
+                                <SolidColorBrush x:Name="Brush3" Color="{ThemeResource SystemBaseHighColor}" />
+                            </TextBlock.Foreground>
                         </TextBlock>
 
                     </Grid>

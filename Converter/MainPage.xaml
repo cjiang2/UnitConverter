@@ -9,25 +9,25 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <SplitView x:Name="MainSplitView" DisplayMode="CompactOverlay" IsPaneOpen="False" Height="Auto"
-               CompactPaneLength="48" OpenPaneLength="200" PaneBackground="#171717;">
+               CompactPaneLength="48" OpenPaneLength="200">
             <SplitView.Pane>
                 <RelativePanel Margin="0,48,0,0">
                     <StackPanel Name="NavigationMenu">
 
                         <RadioButton x:Name="Button1" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Width="200" 
-                                 Tag="&#xE13C;" Content="Item 1" RelativePanel.Below="HomeButton" Foreground="White"/>
+                                 Tag="&#xE13C;" Content="Item 1" RelativePanel.Below="HomeButton"/>
 
                         <RadioButton x:Name="Button2" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Width="200" 
-                                 Tag="&#xE709;" Content="Item 2" RelativePanel.Below="HomeButton" Foreground="White"/>
+                                 Tag="&#xE709;" Content="Item 2" RelativePanel.Below="HomeButton"/>
 
                         <RadioButton x:Name="Button3" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Width="200" 
-                                 Tag="&#xEA37;" Content="Item 3" RelativePanel.Below="HomeButton" Foreground="White"/>
+                                 Tag="&#xEA37;" Content="Item 3" RelativePanel.Below="HomeButton"/>
 
                     </StackPanel>
 
                     <StackPanel RelativePanel.AlignBottomWithPanel="True" Width="200">
-                        <RadioButton x:Name="SettingsButton" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}"
-                                 Tag="&#xE115;" Content="Settings" Width="200" Foreground="White"/>
+                        <RadioButton x:Name="AboutButton" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}"
+                                 Tag="&#xE783;" Content="About" Width="200"/>
                     </StackPanel>
 
                 </RelativePanel>
@@ -50,7 +50,7 @@
                              Background="Transparent" ScrollViewer.VerticalScrollMode="Disabled" ScrollViewer.HorizontalScrollMode="Disabled" Width="48" Height="48">
                 <ListViewItem Name="HamburgerItem">
                     <TextBlock x:Name="Hamburger" FontFamily="Segoe MDL2 Assets" Text="&#xE700;" Margin="6,0,0,0"
-                                    Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </ListViewItem>
             </ListView>
         </RelativePanel>
