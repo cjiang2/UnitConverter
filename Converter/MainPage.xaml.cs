@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +26,33 @@ namespace Converter
         public MainPage()
         {
             this.InitializeComponent();
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
+        }
+
+        private void HamburgerListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;   // Hamburger Menu
+
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+        MainFrame.CanGoBack ?
+        AppViewBackButtonVisibility.Visible :
+        AppViewBackButtonVisibility.Collapsed;
+
+        }
+
+        // Back Navigation Set-up
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+            {
+                e.Handled = true;
+                MainFrame.GoBack();
+            }
+        }
+
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+
         }
     }
 }
