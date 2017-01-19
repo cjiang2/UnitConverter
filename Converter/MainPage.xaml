@@ -48,7 +48,7 @@
         <RelativePanel>
             <ListView Name="HamburgerListView" SelectionMode="None" IsItemClickEnabled="True" ItemClick="HamburgerListView_ItemClick" VerticalAlignment="Top" HorizontalAlignment="Left"
                              Background="Transparent" ScrollViewer.VerticalScrollMode="Disabled" ScrollViewer.HorizontalScrollMode="Disabled" Width="48" Height="48">
-                <ListViewItem Name="HamburgerItem">
+                <ListViewItem Name="HamburgerItem" Height="48">
                     <TextBlock x:Name="Hamburger" FontFamily="Segoe MDL2 Assets" Text="&#xE700;" Margin="3,0,0,0"
                                     FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     <!-- 15, 6,0,0,0-->
