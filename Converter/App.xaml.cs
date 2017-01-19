@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -7,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Globalization.DateTimeFormatting;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +32,19 @@ namespace Converter
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            // acquire default language settings
+            // match app lang to system lang
+            // reference: http://www.c-sharpcorner.com/UploadFile/7e39ca/localization-and-globalization-in-windows-store-apps/
+            // reference: https://www.pedrolamas.com/2015/11/02/cultureinfo-changes-in-uwp/
+            
+            //var culture = new CultureInfo(new DateTimeFormatter("longdate", new[] { "US" }).ResolvedLanguage);
+            var culture = new CultureInfo("en-US");
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = culture.Name;
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
+            
+
         }
 
         /// <summary>

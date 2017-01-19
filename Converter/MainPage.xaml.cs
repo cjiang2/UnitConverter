@@ -27,6 +27,8 @@ namespace Converter
         {
             this.InitializeComponent();
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
+            MainFrame.Navigate(typeof(AreaPage));
+            Button1.IsChecked = true;
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -42,6 +44,23 @@ namespace Converter
                 e.Handled = true;
                 MainFrame.GoBack();
             }
+            // Change selection of Hamburger Items
+            if (MainFrame.CurrentSourcePageType.Equals(typeof(AreaPage)))
+            {
+                Button1.IsChecked = true;
+            }
+            else if (MainFrame.CurrentSourcePageType.Equals(typeof(DistPage)))
+            {
+                Button2.IsChecked = true;
+            }
+            else if (MainFrame.CurrentSourcePageType.Equals(typeof(TimePage)))
+            {
+                Button3.IsChecked = true;
+            }
+            else if (MainFrame.CurrentSourcePageType.Equals(typeof(AboutPage)))
+            {
+                AboutButton.IsChecked = true;
+            }
         }
 
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)
@@ -50,6 +69,26 @@ namespace Converter
                     MainFrame.CanGoBack ?
                     AppViewBackButtonVisibility.Visible :
                     AppViewBackButtonVisibility.Collapsed;
+        }
+
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(AreaPage));
+        }
+
+        private void Button2_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(DistPage));
+        }
+
+        private void Button3_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(TimePage));
+        }
+
+        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(AboutPage));
         }
     }
 }

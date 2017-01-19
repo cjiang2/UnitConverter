@@ -15,19 +15,19 @@
                     <StackPanel Name="NavigationMenu">
 
                         <RadioButton x:Name="Button1" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Width="200" 
-                                 Tag="&#xE13C;" Content="Item 1" RelativePanel.Below="HomeButton"/>
+                                 Tag="&#xE744;" Content="" x:Uid="AreaPane" Click="Button1_Click"/>
 
                         <RadioButton x:Name="Button2" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Width="200" 
-                                 Tag="&#xE709;" Content="Item 2" RelativePanel.Below="HomeButton"/>
+                                 Tag="&#xE75D;" Content="" x:Uid="DistPane" Click="Button2_Click"/>
 
                         <RadioButton x:Name="Button3" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Width="200" 
-                                 Tag="&#xEA37;" Content="Item 3" RelativePanel.Below="HomeButton"/>
+                                 Tag="&#xE916;" Content="" x:Uid="TimePane" Click="Button3_Click"/>
 
                     </StackPanel>
 
                     <StackPanel RelativePanel.AlignBottomWithPanel="True" Width="200">
                         <RadioButton x:Name="AboutButton" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}"
-                                 Tag="&#xE783;" Content="About" Width="200"/>
+                                 Tag="&#xE783;" Content="" Width="200" x:Uid="AboutPane" Click="AboutButton_Click"/>
                     </StackPanel>
 
                 </RelativePanel>
@@ -47,7 +47,7 @@
 
         <RelativePanel>
             <Button x:Name="HamburgerButton" Style="{StaticResource MenuItemButtonStyle}" Tag="&#xE700;" Click="HamburgerButton_Click" 
-                    Width="48" Height="48"/>
+                    Width="48" Height="48" />
         </RelativePanel>
 
     </Grid>
