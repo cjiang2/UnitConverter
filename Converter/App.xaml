@@ -4,4 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Converter"
     RequestedTheme="Dark">
+
+    <!-- Add-on Hamburger Style -->
+    <!-- Source: https://maximelabelle.wordpress.com/2016/02/02/building-a-hamburger-menu-for-your-universal-app/ -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
 </Application>
