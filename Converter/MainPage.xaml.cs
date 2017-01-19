@@ -32,12 +32,6 @@ namespace Converter
         private void HamburgerListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;   // Hamburger Menu
-
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-        MainFrame.CanGoBack ?
-        AppViewBackButtonVisibility.Visible :
-        AppViewBackButtonVisibility.Collapsed;
-
         }
 
         // Back Navigation Set-up
@@ -52,7 +46,10 @@ namespace Converter
 
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)
         {
-
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                    MainFrame.CanGoBack ?
+                    AppViewBackButtonVisibility.Visible :
+                    AppViewBackButtonVisibility.Collapsed;
         }
     }
 }
