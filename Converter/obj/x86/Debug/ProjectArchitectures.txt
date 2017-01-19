@@ -1,0 +1,1 @@
+C:\Users\Zone\Desktop\UWP\Converter\Converter\Converter.csproj;x86
