@@ -13,13 +13,18 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            
             <CommandBar>
                 <CommandBar.Content>
                     <TextBlock Text="" Margin="12,14,0,0" FontWeight="Bold" x:Uid="AboutBar"/>
                 </CommandBar.Content>
             </CommandBar>
-
-            <TextBlock Text="About Content" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="About this app" FontSize="28" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+                <TextBlock Text="Version 0.1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+                <HyperlinkButton Margin="10,10,0,0" Content="Github Page" NavigateUri="https://github.com/zonetrooper32/UnitConverter/tree/master"/>
+                <Button Margin="10,30,0,0" Content="Have Some Issues?" />
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>
