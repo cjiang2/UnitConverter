@@ -20,10 +20,10 @@
                 </CommandBar.Content>
             </CommandBar>
             <StackPanel Grid.Row="1">
-                <TextBlock Text="About this app" FontSize="28" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,10,0,0"/>
-                <TextBlock Text="Version 0.1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,10,0,0"/>
-                <HyperlinkButton Margin="10,10,0,0" Content="Github Page" NavigateUri="https://github.com/zonetrooper32/UnitConverter/tree/master"/>
-                <Button Margin="10,30,0,0" Content="Have Some Issues?" />
+                <TextBlock x:Uid="Aboutthisapp" Text="" Grid.Row="1" Margin="10,10,0,0" Style="{StaticResource TitleTextBlockStyle}"/>
+                <TextBlock x:Uid="Version" Text="" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+                <HyperlinkButton x:Uid="GithubButton" Margin="10,10,0,0" Content="" NavigateUri="https://github.com/zonetrooper32/UnitConverter/tree/master"/>
+                <HyperlinkButton x:Uid="HaveIssuesButton" Margin="10,10,0,0" Content="" NavigateUri="https://github.com/zonetrooper32/UnitConverter/issues"/>
             </StackPanel>
         </Grid>
     </Grid>

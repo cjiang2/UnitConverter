@@ -141,4 +141,16 @@
   <data name="TimePane.Content" xml:space="preserve">
     <value>时间</value>
   </data>
+  <data name="Aboutthisapp.Text" xml:space="preserve">
+    <value>关于此应用</value>
+  </data>
+  <data name="GithubButton.Content" xml:space="preserve">
+    <value>Github页面</value>
+  </data>
+  <data name="HaveIssuesButton.Content" xml:space="preserve">
+    <value>出现问题？</value>
+  </data>
+  <data name="Version.Text" xml:space="preserve">
+    <value>UnitConverter 0.1</value>
+  </data>
 </root>
