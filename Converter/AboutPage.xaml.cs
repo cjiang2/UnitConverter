@@ -26,6 +26,5 @@ namespace Converter
         {
             this.InitializeComponent();
         }
-
     }
 }

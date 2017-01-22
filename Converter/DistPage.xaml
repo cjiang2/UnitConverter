@@ -27,7 +27,7 @@
         </CommandBar>
 
         <StackPanel Margin="0,10,0,0" Grid.Row="1" Grid.Column="1">
-            <TextBlock Text="To Convert :" Margin="10,20,0,0" FontSize="24"/>
+            <TextBlock Text="" x:Uid="Toconvert" Margin="10,20,0,0" FontSize="24"/>
             <TextBox Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}" Background="{x:Null}"/>
             <ListBox Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}">
                 <ListBox.ItemsPanel>
@@ -43,7 +43,7 @@
             </ListBox>
         </StackPanel>
         <StackPanel Margin="0,20,0,0" Grid.Row="2" Grid.Column="1">
-            <TextBlock Text="Converted:" Margin="10,20,0,0" FontSize="24"/>
+            <TextBlock Text="" x:Uid="Converted" Margin="10,20,0,0" FontSize="24"/>
             <TextBlock Margin="10,20,10,0" Text="0" FontSize="36"/>
             <ListBox Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}">
                 <ListBox.ItemsPanel>
@@ -58,8 +58,5 @@
                 <ListBoxItem Content="km"/>
             </ListBox>
         </StackPanel>
-
-
-
     </Grid>
 </Page>
