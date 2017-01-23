@@ -27,55 +27,41 @@
         </CommandBar>
 
         <StackPanel Margin="0,10,0,0" Grid.Row="1" Grid.Column="1">
-            <TextBlock Text="" x:Uid="Toconvert" Margin="10,20,0,0" FontSize="24"/>
-            <TextBox Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}" Background="{x:Null}"/>
-            <ListBox Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}">
+            <TextBlock Text="" x:Uid="Toconvert" Margin="10,20,0,0" Style="{StaticResource TitleTextBlockStyle}"/>
+            <TextBox KeyDown="textboxkeydown" InputScope="Number" TextChanged="toconverttextbox_TextChanged" Name="toconverttextbox" Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}" Background="{x:Null}"/>
+            <ListBox  SelectionChanged="toconvertlistbox_SelectionChanged" Name="toconvertlistbox" Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding unitname}" FontFamily="Segoe UI"/>
+                            <TextBlock Text="&#xB2;" FontFamily="Segoe UI"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="mm&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem IsSelected="True">
-                    <TextBlock FontFamily="Segoe UI" Text="cm&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="dm&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="m&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="km&#xB2;" />
-                </ListBoxItem>
             </ListBox>
         </StackPanel>
         <StackPanel Margin="0,20,0,0" Grid.Row="2" Grid.Column="1">
-            <TextBlock Text="" x:Uid="Converted" Margin="10,20,0,0" FontSize="24"/>
-            <TextBlock Margin="10,20,10,0" Text="0" FontSize="36"/>
-            <ListBox Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}">
+            <TextBlock Text="" x:Uid="Converted" Margin="10,20,0,0" Style="{StaticResource TitleTextBlockStyle}"/>
+            <TextBlock Name="convertedvalue" Margin="10,20,10,0" Text="0" FontSize="36"/>
+            <ListBox SelectionChanged="convertedlistbox_SelectionChanged" Name="convertedlistbox" Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding unitname}" FontFamily="Segoe UI"/>
+                            <TextBlock Text="&#xB2;" FontFamily="Segoe UI"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="mm&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem IsSelected="True">
-                    <TextBlock FontFamily="Segoe UI" Text="cm&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="dm&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="m&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="km&#xB2;" />
-                </ListBoxItem>
             </ListBox>
         </StackPanel>
     </Grid>
