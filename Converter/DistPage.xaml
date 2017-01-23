@@ -5,9 +5,47 @@
     xmlns:local="using:Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:triggers="using:WindowsStateTriggers"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--UI state for Desktops/Phone -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <!-- Using CompactInline for 720p+ Window -->
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitleText.Margin"
+                                Value="12,14,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+                <!-- Using Overlay for (480, 720) Window -->
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="480" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitleText.Margin"
+                                Value="60,14,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+                <!-- For Mobile: always Overlay -->
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:DeviceFamilyStateTrigger DeviceFamily="Mobile" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitleText.Margin"
+                                Value="60,14,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -22,7 +60,7 @@
         </Grid.ColumnDefinitions>
         <CommandBar Grid.ColumnSpan="4">
             <CommandBar.Content>
-                <TextBlock Text="" Margin="12,14,0,0" FontWeight="Bold" x:Uid="DistanceBar"/>
+                <TextBlock x:Name="TitleText" Text="" Margin="12,14,0,0" FontWeight="Bold" x:Uid="DistanceBar"/>
             </CommandBar.Content>
         </CommandBar>
 

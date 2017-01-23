@@ -5,32 +5,76 @@
     xmlns:local="using:Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:triggers="using:WindowsStateTriggers"
     mc:Ignorable="d">
 
+    <!-- Main Hamburger Code -->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <SplitView x:Name="MainSplitView" DisplayMode="CompactInline" IsPaneOpen="False" Height="Auto"
+        <!--UI state for Desktops/Phone -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <!-- Using CompactInline for 720p+ Window -->
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainSplitView.DisplayMode"
+                                Value="CompactInline" />
+                    </VisualState.Setters>
+                </VisualState>
+                <!-- Using Overlay for (480, 720) Window -->
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="480" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainSplitView.DisplayMode"
+                                Value="Overlay" />
+                    </VisualState.Setters>
+                </VisualState>
+                <!-- For Mobile: always Overlay -->
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:DeviceFamilyStateTrigger DeviceFamily="Mobile" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainSplitView.DisplayMode"
+                                Value="Overlay" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+        <SplitView x:Name="MainSplitView" IsPaneOpen="False" Height="Auto"
                CompactPaneLength="48" OpenPaneLength="200">
             <SplitView.Pane>
-                <RelativePanel Margin="0,48,0,0">
-                    <StackPanel Name="NavigationMenu">
+                <Grid Margin="0,48,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                        <RadioButton x:Name="Button1" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Width="200" 
+                    <ScrollViewer Name="NavigationMenu">
+                        <StackPanel>
+                            <RadioButton x:Name="Button1" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Width="200" 
                                  Tag="&#xE744;" Content="" x:Uid="AreaPane" Click="Button1_Click"/>
 
-                        <RadioButton x:Name="Button2" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Width="200" 
+                            <RadioButton x:Name="Button2" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Width="200" 
                                  Tag="&#xE75D;" Content="" x:Uid="DistPane" Click="Button2_Click"/>
 
-                        <RadioButton x:Name="Button3" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Width="200" 
+                            <RadioButton x:Name="Button3" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Width="200" 
                                  Tag="&#xE916;" Content="" x:Uid="TimePane" Click="Button3_Click"/>
+                        </StackPanel>
+                    </ScrollViewer>
 
-                    </StackPanel>
-
-                    <StackPanel RelativePanel.AlignBottomWithPanel="True" Width="200">
+                    <StackPanel Grid.Row="1" Width="200">
                         <RadioButton x:Name="AboutButton" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}"
                                  Tag="&#xE783;" Content="" Width="200" x:Uid="AboutPane" Click="AboutButton_Click"/>
                     </StackPanel>
 
-                </RelativePanel>
+                </Grid>
             </SplitView.Pane>
 
             
