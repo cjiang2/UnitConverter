@@ -156,7 +156,7 @@
   <data name="Converted.Text" xml:space="preserve">
     <value>转换后</value>
   </data>
-  <data name="Toconvert.Text" xml:space="preserve">
+  <data name="ToConvert.Text" xml:space="preserve">
     <value>原始数据</value>
   </data>
 </root>

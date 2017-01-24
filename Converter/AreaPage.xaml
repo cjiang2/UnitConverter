@@ -57,18 +57,18 @@
         </CommandBar>
 
         <ScrollViewer Grid.Row="1" >
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Margin="0,0,0,10">
                 <StackPanel Margin="0,10,0,0">
-                    <TextBlock Text="" x:Uid="Toconvert" Margin="10,20,0,0" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBox KeyDown="textboxkeydown" InputScope="Number" TextChanged="toconverttextbox_TextChanged" 
-                         Name="toconverttextbox" Margin="10,20,10,0" BorderThickness="0,0,0,4" 
+                    <TextBlock Text="" x:Uid="ToConvert" Margin="10,20,0,0" Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBox FontSize="24" KeyDown="ToConvertTextBox_KeyDown" InputScope="Number" TextChanged="ToConvertTextBox_TextChanged" 
+                         Name="ToConvertTextBox" Margin="10,20,10,0" BorderThickness="0,0,0,4" 
                          BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}" Background="{x:Null}"/>
-                    <ListBox SelectionChanged="toconvertlistbox_SelectionChanged" Name="toconvertlistbox" 
+                    <ListBox SelectionChanged="ToConvertListBox_SelectionChanged"  Name="ToConvertListBox" 
                           Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding unitname}" FontFamily="Segoe UI"/>
+                                    <TextBlock Text="{Binding UnitName}" FontFamily="Segoe UI"/>
                                     <TextBlock Text="&#xB2;" FontFamily="Segoe UI"/>
                                 </StackPanel>
                             </DataTemplate>
@@ -83,13 +83,13 @@
 
                 <StackPanel Margin="0,20,0,0" Grid.Row="1">
                     <TextBlock Text="" x:Uid="Converted" Margin="10,20,0,0" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBlock Name="convertedvalue" Margin="10,20,10,0" Text="0" FontSize="36"/>
-                    <ListBox SelectionChanged="convertedlistbox_SelectionChanged" Name="convertedlistbox" 
+                    <TextBlock Name="ConvertedValue" Margin="10,20,10,0" Text="0" FontSize="24"/>
+                    <ListBox SelectionChanged="ConvertedListBox_SelectionChanged" Name="ConvertedListBox" 
                          Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding unitname}" FontFamily="Segoe UI"/>
+                                    <TextBlock Text="{Binding UnitName}" FontFamily="Segoe UI"/>
                                     <TextBlock Text="&#xB2;" FontFamily="Segoe UI"/>
                                 </StackPanel>
                             </DataTemplate>

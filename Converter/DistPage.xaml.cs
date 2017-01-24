@@ -31,26 +31,25 @@ namespace Converter
        //---------------Display Listbox item by BinDing And set convertingvalue---------------//
             List<Unit> DistanceUnit = new List<Unit>()       //Unit Class is at /Models/Unit.cs
             {
-                new Unit() { unitname = "mm", convertingvalue = 1000 },
-                new Unit() { unitname = "cm", convertingvalue = 100 },
-                new Unit() { unitname = "dm", convertingvalue = 10 },
-                new Unit() { unitname = "m", convertingvalue = 1 },
-                new Unit() { unitname = "km", convertingvalue = 0.001 },
-                new Unit() { unitname = "Inch", convertingvalue = 39.3700787 },
-                new Unit() { unitname = "Foot", convertingvalue = 3.2808399 },
-                new Unit() { unitname = "Mile", convertingvalue = 0.00062 }
+                new Unit() { UnitName = "mm", ConvertingValue = 1000 },
+                new Unit() { UnitName = "cm", ConvertingValue = 100 },
+                new Unit() { UnitName = "dm", ConvertingValue = 10 },
+                new Unit() { UnitName = "m", ConvertingValue = 1 },
+                new Unit() { UnitName = "km", ConvertingValue = 0.001 },
+                new Unit() { UnitName = "Inch", ConvertingValue = 39.3700787 },
+                new Unit() { UnitName = "Foot", ConvertingValue = 3.2808399 },
+                new Unit() { UnitName = "Mile", ConvertingValue = 0.00062 }
             };
-            toconvertlistbox.ItemsSource = DistanceUnit;
-            toconvertlistbox.DisplayMemberPath = "unitname";
-            convertedlistbox.ItemsSource = DistanceUnit;
-            convertedlistbox.DisplayMemberPath = "unitname";
+            ToConvertListBox.ItemsSource = DistanceUnit;
+            ToConvertListBox.DisplayMemberPath = "UnitName";
+            ConvertedListBox.ItemsSource = DistanceUnit;
+            ConvertedListBox.DisplayMemberPath = "UnitName";
         }
 
-        
         //----------------Limit Textbox input:only can input number---------------//
-        private void textboxkeydown(object sender, KeyRoutedEventArgs e)
+        private void ToConvertTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            if((e.Key < Windows.System.VirtualKey.NumberPad0 || e.Key >Windows.System.VirtualKey.NumberPad9) &&(e.Key < Windows.System.VirtualKey.Number0 || e.Key > Windows.System.VirtualKey.Number9))
+            if ((e.Key < Windows.System.VirtualKey.NumberPad0 || e.Key > Windows.System.VirtualKey.NumberPad9) && (e.Key < Windows.System.VirtualKey.Number0 || e.Key > Windows.System.VirtualKey.Number9))
             {
                 e.Handled = true;
             }
@@ -58,36 +57,36 @@ namespace Converter
 
 
         //---------------Start Convert When TextChanged, SelectionChanged-----------------//
-        private void toconverttextbox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ToConvertTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            displayresult();
+            DisplayResult();
         }
 
 
-        private void toconvertlistbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ToConvertListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            displayresult();
+            DisplayResult();
         }
 
 
-        private void convertedlistbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ConvertedListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            displayresult();
+            DisplayResult();
         }
 
 
         //---------------This can display result on ConvertedTextBlock---------------//
-        public void displayresult()
+        public void DisplayResult()
         {
-            double toconvertvalue;
-            bool canornotconverttodouble = double.TryParse(toconverttextbox.Text, out toconvertvalue);
-            bool istextboxnotempty = toconverttextbox.Text != null;
-            bool istoconvertlistboxnotempty = toconvertlistbox.SelectedItem != null ;
-            bool isconvertedlistboxnotempty = convertedlistbox.SelectedItem != null;
-            convertmethod convert = new convertmethod();
-            if (canornotconverttodouble && istextboxnotempty && istoconvertlistboxnotempty && isconvertedlistboxnotempty)
-                convertedvalue.Text = (convert.dimensionconvert(toconvertvalue, ((Unit)toconvertlistbox.SelectedItem).convertingvalue, ((Unit)convertedlistbox.SelectedItem).convertingvalue)).ToString();
-                                      //"convert.dismensionconvert" Method is at /Models/Unit.cs
+            double ToConvertValue;
+            bool CanOrNotConvertToDouble = double.TryParse(ToConvertTextBox.Text, out ToConvertValue);
+            bool IsTextBoxNotEmpty = ToConvertTextBox.Text != null;
+            bool IsToConvertListBoxNotEmpty = ToConvertListBox.SelectedItem != null;
+            bool IsConvertedListBoxNotEmpty = ConvertedListBox.SelectedItem != null;
+            ConvertMethod convert = new ConvertMethod();
+            if (CanOrNotConvertToDouble && IsTextBoxNotEmpty && IsToConvertListBoxNotEmpty && IsConvertedListBoxNotEmpty)
+                ConvertedValue.Text = (convert.BasicUnitConvert(ToConvertValue, ((Unit)ToConvertListBox.SelectedItem).ConvertingValue, ((Unit)ConvertedListBox.SelectedItem).ConvertingValue)).ToString();
+            //"convert.distenceconvert" Method is at /Models/Unit.cs
         }
 
     }
