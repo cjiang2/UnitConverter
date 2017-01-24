@@ -8,8 +8,9 @@ namespace Converter.Models
 {
     public class Unit
     {
-        public string unitname { get; set; }
-        public double convertingvalue { get; set; }
+        public string UnitName { get; set; }
+        public string ChineseUnitName { get; set; }
+        public double ConvertingValue { get; set; }
         //ConvertingValue is a double that multiply one unit equal to one meters.
         //For example:
         //1 centimeter * 100 = 1 meter
@@ -18,11 +19,13 @@ namespace Converter.Models
         //"0.001"is the ConvertingValue.               
     }
 
-    public class convertmethod
+   
+    //This Method Reference github.com/gncvt/UnitConverter
+    public class ConvertMethod
     {
-        public double dimensionconvert(double toconvert, double toconvertUnitConvertingValue, double convertedUnitConvertingValue )
+        public double BasicUnitConvert(double ToConvert, double ToConvertUnitConvertingValue, double ConvertedUnitConvertingValue )
         {
-            double result = (toconvert / toconvertUnitConvertingValue * convertedUnitConvertingValue);
+            double result = (ToConvert / ToConvertUnitConvertingValue * ConvertedUnitConvertingValue);
             return result;
         }
     }
