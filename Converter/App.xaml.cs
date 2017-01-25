@@ -38,8 +38,8 @@ namespace Converter
             // reference: http://www.c-sharpcorner.com/UploadFile/7e39ca/localization-and-globalization-in-windows-store-apps/
             // reference: https://www.pedrolamas.com/2015/11/02/cultureinfo-changes-in-uwp/
             
-            //var culture = new CultureInfo(new DateTimeFormatter("longdate", new[] { "US" }).ResolvedLanguage);
-            var culture = new CultureInfo("en-US");
+            var culture = new CultureInfo(new DateTimeFormatter("longdate", new[] { "US" }).ResolvedLanguage);
+            //var culture = new CultureInfo("en-US");
             Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = culture.Name;
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
