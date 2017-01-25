@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -47,12 +48,15 @@ namespace Converter
         }
 
         //----------------Limit Textbox input:only can input number---------------//
+        // reference: http://stackoverflow.com/questions/19761487/how-to-make-a-textbox-accept-only-numbers-and-just-one-decimal-point-in-windows
         private void ToConvertTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            if ((e.Key < Windows.System.VirtualKey.NumberPad0 || e.Key > Windows.System.VirtualKey.NumberPad9) && (e.Key < Windows.System.VirtualKey.Number0 || e.Key > Windows.System.VirtualKey.Number9))
-            {
-                e.Handled = true;
-            }
+            // only allow 0-9 and "."
+            e.Handled = !((e.Key.GetHashCode() >= 48 && e.Key.GetHashCode() <= 57));
+
+            // check if "." is already there in box.
+            if (e.Key.GetHashCode() == 190)
+                e.Handled = (sender as TextBox).Text.Contains(".");
         }
 
 
