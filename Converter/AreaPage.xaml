@@ -5,78 +5,105 @@
     xmlns:local="using:Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:triggers="using:WindowsStateTriggers"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--UI state for Desktops/Phone -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <!-- Using CompactInline for 720p+ Window -->
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitleText.Margin"
+                                Value="12,14,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+                <!-- Using Overlay for (480, 720) Window -->
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="480" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitleText.Margin"
+                                Value="60,14,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+                <!-- For Mobile: always Overlay -->
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:DeviceFamilyStateTrigger DeviceFamily="Mobile" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitleText.Margin"
+                                Value="60,14,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="*"/>
-
-            <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-        <CommandBar Grid.ColumnSpan="4">
+        <CommandBar>
             <CommandBar.Content>
-                <TextBlock Text="" Margin="12,14,0,0" FontWeight="Bold" x:Uid="AreaBar"/>
+                <TextBlock x:Name="TitleText" Text="" Margin="12,14,0,0" FontWeight="Bold" x:Uid="AreaBar"/>
             </CommandBar.Content>
         </CommandBar>
 
-        <StackPanel Margin="0,10,0,0" Grid.Row="1" Grid.Column="1">
-            <TextBlock Text="" x:Uid="Toconvert" Margin="10,20,0,0" FontSize="24"/>
-            <TextBox Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}" Background="{x:Null}"/>
-            <ListBox Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="mm&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem IsSelected="True">
-                    <TextBlock FontFamily="Segoe UI" Text="cm&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="dm&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="m&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="km&#xB2;" />
-                </ListBoxItem>
-            </ListBox>
-        </StackPanel>
-        <StackPanel Margin="0,20,0,0" Grid.Row="2" Grid.Column="1">
-            <TextBlock Text="" x:Uid="Converted" Margin="10,20,0,0" FontSize="24"/>
-            <TextBlock Margin="10,20,10,0" Text="0" FontSize="36"/>
-            <ListBox Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="mm&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem IsSelected="True">
-                    <TextBlock FontFamily="Segoe UI" Text="cm&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="dm&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="m&#xB2;" />
-                </ListBoxItem>
-                <ListBoxItem>
-                    <TextBlock FontFamily="Segoe UI" Text="km&#xB2;" />
-                </ListBoxItem>
-            </ListBox>
-        </StackPanel>
+        <ScrollViewer Grid.Row="1" >
+            <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                <StackPanel Margin="0,10,0,0">
+                    <TextBlock Text="" x:Uid="ToConvert" Margin="10,20,0,0" Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBox FontSize="24" KeyDown="ToConvertTextBox_KeyDown" InputScope="Number" TextChanged="ToConvertTextBox_TextChanged" 
+                         Name="ToConvertTextBox" Margin="10,20,10,0" BorderThickness="0,0,0,4" 
+                         BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}" Background="{x:Null}"/>
+                    <ListBox SelectionChanged="ToConvertListBox_SelectionChanged"  Name="ToConvertListBox" 
+                          Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding UnitName}" FontFamily="Segoe UI"/>
+                                    <TextBlock Text="&#xB2;" FontFamily="Segoe UI"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </StackPanel>
+
+                <StackPanel Margin="0,20,0,0" Grid.Row="1">
+                    <TextBlock Text="" x:Uid="Converted" Margin="10,20,0,0" Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBlock Name="ConvertedValue" Margin="10,20,10,0" Text="0" FontSize="24"/>
+                    <ListBox SelectionChanged="ConvertedListBox_SelectionChanged" Name="ConvertedListBox" 
+                         Margin="10,20,10,0" BorderThickness="0,0,0,4" BorderBrush="{ThemeResource AppBarToggleButtonBackgroundChecked}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding UnitName}" FontFamily="Segoe UI"/>
+                                    <TextBlock Text="&#xB2;" FontFamily="Segoe UI"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+
     </Grid>
 </Page>
