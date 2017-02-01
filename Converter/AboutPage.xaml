@@ -60,7 +60,7 @@
             <TextBlock x:Uid="Aboutthisapp" Text="" Grid.Row="1" Margin="10,10,0,0" Style="{StaticResource TitleTextBlockStyle}"/>
             <TextBlock x:Uid="Version" Text="" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,10,0,0"/>
             <HyperlinkButton x:Uid="GithubButton" Margin="10,10,0,0" Content="" NavigateUri="https://github.com/zonetrooper32/UnitConverter/tree/master"/>
-            <HyperlinkButton x:Uid="HaveIssuesButton" Margin="10,10,0,0" Content="" NavigateUri="https://github.com/zonetrooper32/UnitConverter/issues"/>
+            <HyperlinkButton x:Uid="Feedback" Margin="10,0,0,0" Content="" NavigateUri="https://github.com/zonetrooper32/UnitConverter/issues"/>
         </StackPanel>
     </Grid>
 </Page>

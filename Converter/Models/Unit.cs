@@ -20,13 +20,22 @@ namespace Converter.Models
     }
 
    
-    //This Method Reference github.com/gncvt/UnitConverter
     public class ConvertMethod
     {
-        public double BasicUnitConvert(double ToConvert, double ToConvertUnitConvertingValue, double ConvertedUnitConvertingValue )
+        public String Convert(string ToConvertTextBox, object ToConvertListBoxSelected, object ConvertedListBoxSelected )
         {
-            double result = (ToConvert / ToConvertUnitConvertingValue * ConvertedUnitConvertingValue);
-            return result;
+            double ToConvertValue;
+            string ConvertedValue = "0";
+            bool CanOrNotConvertToDouble = double.TryParse(ToConvertTextBox, out ToConvertValue);
+            bool IsTextBoxNotEmpty = ToConvertTextBox != null;
+            bool IsToConvertListBoxNotEmpty = ToConvertListBoxSelected != null;
+            bool IsConvertedListBoxNotEmpty = ConvertedListBoxSelected != null;
+            if (CanOrNotConvertToDouble && IsTextBoxNotEmpty && IsToConvertListBoxNotEmpty && IsConvertedListBoxNotEmpty)
+                //This Method Reference github.com/gncvt/UnitConverter
+                ConvertedValue = (ToConvertValue / ((Unit)ToConvertListBoxSelected).ConvertingValue * ((Unit)ConvertedListBoxSelected).ConvertingValue).ToString();
+            return ConvertedValue;
+
+
         }
     }
 }

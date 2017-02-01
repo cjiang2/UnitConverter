@@ -60,38 +60,28 @@ namespace Converter
         }
 
 
-        //---------------Start Convert When TextChanged, SelectionChanged-----------------//
+        //------------Start Convert And Display Result When TextChanged, SelectionChanged--------------//
         private void ToConvertTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            DisplayResult();
+            ConvertMethod convert = new ConvertMethod();
+            ConvertedValue.Text = convert.Convert(ToConvertTextBox.Text, ToConvertListBox.SelectedItem, ConvertedListBox.SelectedItem);
         }
 
 
         private void ToConvertListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DisplayResult();
+            ConvertMethod convert = new ConvertMethod();
+            ConvertedValue.Text = convert.Convert(ToConvertTextBox.Text, ToConvertListBox.SelectedItem, ConvertedListBox.SelectedItem);
         }
 
 
         private void ConvertedListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DisplayResult();
-        }
-
-
-        //---------------This can display result on ConvertedTextBlock---------------//
-        public void DisplayResult()
-        {
-            double ToConvertValue;
-            bool CanOrNotConvertToDouble = double.TryParse(ToConvertTextBox.Text, out ToConvertValue);
-            bool IsTextBoxNotEmpty = ToConvertTextBox.Text != null;
-            bool IsToConvertListBoxNotEmpty = ToConvertListBox.SelectedItem != null;
-            bool IsConvertedListBoxNotEmpty = ConvertedListBox.SelectedItem != null;
             ConvertMethod convert = new ConvertMethod();
-            if (CanOrNotConvertToDouble && IsTextBoxNotEmpty && IsToConvertListBoxNotEmpty && IsConvertedListBoxNotEmpty)
-                ConvertedValue.Text = (convert.BasicUnitConvert(ToConvertValue, ((Unit)ToConvertListBox.SelectedItem).ConvertingValue, ((Unit)ConvertedListBox.SelectedItem).ConvertingValue)).ToString();
-            //"convert.distenceconvert" Method is at /Models/Unit.cs
+            ConvertedValue.Text = convert.Convert(ToConvertTextBox.Text, ToConvertListBox.SelectedItem, ConvertedListBox.SelectedItem);
         }
+
+
 
     }
 }

@@ -147,8 +147,8 @@
   <data name="GithubButton.Content" xml:space="preserve">
     <value>Github Page</value>
   </data>
-  <data name="HaveIssuesButton.Content" xml:space="preserve">
-    <value>Have some issues?</value>
+  <data name="Feedback.Content" xml:space="preserve">
+    <value>Feedback</value>
   </data>
   <data name="Version.Text" xml:space="preserve">
     <value>UnitConverter 0.1</value>
